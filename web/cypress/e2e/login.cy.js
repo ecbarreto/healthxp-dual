@@ -1,7 +1,7 @@
 import users from '../fixtures/users.json'
+
 import loginPage from '../support/pages/LoginPage'
 import studentPage from '../support/pages/StudentPage'
-
 
 describe('login', () => {
 
@@ -26,18 +26,19 @@ describe('login', () => {
         loginPage.popup.haveText('Suas credenciais são inválidas, por favor tente novamente!')
     })
 
-    it('não deve logar com emails incorretos', () => {
+    it.only('não deve logar com emails incorretos', () => {
         const emails = users.inv_emails
 
         let outputMessages = []
         let expectedMassages = []
 
         loginPage.go()
+
         emails.forEach((u) => {
             loginPage.fill(u)
             loginPage.submit()
 
-            loginPage.popup.content() 
+            loginPage.popup.content()
                 .invoke('text')
                 .then((t) => {
                     cy.log(t)
@@ -46,7 +47,7 @@ describe('login', () => {
                 })
             loginPage.popup.back()
         })
-        
+
         cy.wrap(outputMessages).should('deep.equal', expectedMassages)
     })
 

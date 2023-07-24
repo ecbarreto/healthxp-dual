@@ -26,6 +26,44 @@
         "age": "",
         "weight": "",
         "feet_tall": ""
-    }
-
+    },
+    "underage": {
+        "name": "Antônio Xpto",
+        "email": "antonio@xpto.com",
+        "age": "15",
+        "weight": "67",
+        "feet_tall": "1.70"
+    },
+    "underweight": [
+        {
+            "name": "Antônio Xpto",
+            "email": "antonio@xpto.com",
+            "age": "16",
+            "weight": "0",
+            "feet_tall": "1.70"
+        },
+        {
+            "name": "Antônio Xpto",
+            "email": "antonio@xpto.com",
+            "age": "16",
+            "weight": "-75",
+            "feet_tall": "1.70"
+        }
+    ],
+    "underheight": [
+        {
+            "name": "Antônio Xpto",
+            "email": "antonio@xpto.com",
+            "age": "16",
+            "weight": "75",
+            "feet_tall": "0"
+        },
+        {
+            "name": "Antônio Xpto",
+            "email": "antonio@xpto.com",
+            "age": "16",
+            "weight": "75",
+            "feet_tall": "-1.20"
+        }
+    ]
 }

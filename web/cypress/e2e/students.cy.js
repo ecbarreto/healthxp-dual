@@ -12,6 +12,7 @@ describe('students', () => {
 
         studentPage.goToRegister()
         studentPage.submitForm(student)
+
         studentPage.popup.haveText('Dados cadastrados com sucesso.')
     })
 
@@ -34,18 +35,19 @@ describe('students', () => {
 
         studentPage.search(student.name)
         studentPage.remove(student.email)
-
         studentPage.popup.confirm()
+
         studentPage.popup.haveText('Exclusão realizada com sucesso.')
     })
 
-    it.only('todos os campos são obrigatórios', () => {
+    it('todos os campos são obrigatórios', () => {
         const student = students.required
 
         cy.adminLogin()
 
         studentPage.goToRegister()
         studentPage.submitForm(student)
+
         studentPage.requiredMessage('Nome completo', 'Nome é obrigatório')
         studentPage.requiredMessage('E-mail', 'O email é obrigatório')
         studentPage.requiredMessage('Idade', 'A idade é obrigatória')
@@ -53,10 +55,42 @@ describe('students', () => {
         studentPage.requiredMessage('Altura', 'A altura é obrigatória')
     })
 
-    //automatizar o cenário onde o administrador tenta cadastrar um aluno com idade menor de 16 anos
-    //automatizar o cenário onde o administrador informa o peso igual ou menor que zero
-    //automatizar o cenário onde o administrador informa a altura igual ou menor que zero
+    it('não deve cadastrar aluno com menos de 16 anos', () => {
+        const student = students.underage
 
-    //quando o peso é menor ou igual que zero deve retornar a mensagem "peso não permitido"
-    //quando a altura é igual ou menor que zero deve retornar a mensagem "altura não permitida"
+        cy.adminLogin()
+
+        studentPage.goToRegister()
+        studentPage.submitForm(student)
+
+        studentPage.requiredMessage('Idade', 'A idade mínima para treinar é 16 anos!')
+    })
+
+    it('não deve cadastrar aluno com peso igual ou menor que zero', () => {
+        const studentsData = students.underweight
+
+        cy.adminLogin()
+
+        studentPage.goToRegister()
+
+        studentsData.forEach((s) => {
+            studentPage.submitForm(s)
+
+            studentPage.requiredMessage('Peso (em kg)', 'Peso não permitido')
+        })
+    })
+
+    it('não deve cadastrar aluno com altura igual ou menor que zero', () => {
+        const studentsData = students.underheight
+
+        cy.adminLogin()
+
+        studentPage.goToRegister()
+
+        studentsData.forEach((s) => {
+            studentPage.submitForm(s)
+
+            studentPage.requiredMessage('Altura', 'Altura não permitida')
+        })
+    })
 })
