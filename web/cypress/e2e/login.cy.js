@@ -26,7 +26,7 @@ describe('login', () => {
         loginPage.popup.haveText('Suas credenciais são inválidas, por favor tente novamente!')
     })
 
-    it.only('não deve logar com emails incorretos', () => {
+    it('não deve logar com emails incorretos', () => {
         const emails = users.inv_emails
 
         let outputMessages = []
