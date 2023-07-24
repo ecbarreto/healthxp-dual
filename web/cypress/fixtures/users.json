@@ -1,0 +1,57 @@
+{
+  "admin": {
+    "name": "Admin",
+    "email": "admin@healthxp.com",
+    "password": "xperience"
+  },
+  "inv_pass": {
+    "email": "admin@healthxp.com",
+    "password": "teste123"
+  },
+  "email_not_found": {
+    "email": "404@email.com",
+    "password": "123456"
+  },
+  "inv_emails": [
+    {
+      "email": "admin&email.com",
+      "password": "123456"
+    },
+    {
+      "email": "www.test.com",
+      "password": "123456"
+    },
+    {
+      "email": "1234567890",
+      "password": "123456"
+    },
+    {
+      "email": "anderson@gmail,com",
+      "password": "123456"
+    },
+    {
+      "email": "asdasf123asda",
+      "password": "123456"
+    },
+    {
+      "email": "&ˆ*&ˆ*&ˆ*&ˆ&*ˆ",
+      "password": "123456"
+    },
+    {
+      "email": "admin*email.com",
+      "password": "123456"
+    },
+    {
+      "email": "     @test.com",
+      "password": "123456"
+    }
+  ],
+  "empty_email": {
+    "email": "",
+    "password": "123456"
+  },
+  "empty_password": {
+    "email": "eduardo@teste.com",
+    "password": ""
+  }
+}
